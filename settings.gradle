@@ -1,0 +1,3 @@
+rootProject.name='WeatherApplication'
+include ':app'
+include ':datacomponent'

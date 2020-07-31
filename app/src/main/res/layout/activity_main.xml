@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.jommaa.weatherapplication.viewmodel.TownsListViewModel"
+            />
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.TownsListFragment">
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/townsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:adapter="@{viewModel}" />
+
+        <FrameLayout
+            android:id="@+id/newTownFragment"
+            android:background="@color/cardview_shadow_end_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_marginRight="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/townsList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_input_add" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>
