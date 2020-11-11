@@ -14,7 +14,10 @@ interface TownDao {
     fun getAll(): Single<List<Town>>
 
     @Query("SELECT * FROM town WHERE id=:townId")
-    fun loadByIds(townId: IntArray): List<Town>
+    fun loadById(townId: Int): Single<List<Town>>
+
+    @Query("SELECT count(*) from town")
+    fun getTownsCount(): Int
 
     @Insert
     fun insert(vararg town: Town?): Completable
