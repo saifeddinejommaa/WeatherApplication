@@ -15,4 +15,15 @@ class TownRepository(private val dataSource: TownDataSource) {
             .onErrorReturn { TownsListResult.Failure(it) }
             .startWith(TownsListResult.Loading)
     }
+
+    fun getTownById(id:Int):  Observable<TownsListResult> {
+        return dataSource.getTownById(id).toObservable()
+            .map { TownsListResult.Success(it) as TownsListResult }
+            .onErrorReturn { TownsListResult.Failure(it) }
+            .startWith(TownsListResult.Loading)
+    }
+
+    fun getTownsCount(): Int {
+       return dataSource.getTownsCount()
+    }
 }

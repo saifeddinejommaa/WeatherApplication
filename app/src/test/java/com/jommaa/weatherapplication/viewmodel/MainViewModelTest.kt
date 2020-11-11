@@ -1,11 +1,9 @@
 package com.jommaa.weatherapplication.viewmodel
 
 import com.jommaa.datacomponent.Results.TownsListResult
-import com.jommaa.datacomponent.WeatherRepository.WeatherRepository
 import com.jommaa.datacomponent.dataobject.Town
 import com.jommaa.datacomponent.db.repositories.TownRepository
 import com.jommaa.weatherapplication.rx.RxJavaTestHooksResetRule
-import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
@@ -20,7 +18,7 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class TownsListViewModelTest {
+class MainViewModelTest {
 
     @get:Rule
     var rxJavaTestHooksResetRule = RxJavaTestHooksResetRule()
@@ -28,11 +26,11 @@ class TownsListViewModelTest {
     @Mock
     lateinit var townRepository: TownRepository
 
-    private lateinit var sut: TownsListViewModel
+    private lateinit var sut: MainViewModel
 
     @Before
     fun setUp() {
-        sut = TownsListViewModel(townRepository)
+        sut = MainViewModel(townRepository)
     }
 
     @Test

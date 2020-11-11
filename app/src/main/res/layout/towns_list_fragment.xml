@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout  xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-    <data>
+
+   <!--  <data>
         <variable
             name="viewModel"
             type="com.jommaa.weatherapplication.viewmodel.TownsListViewModel"
             />
-    </data>
+    </data> -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,9 +19,10 @@
         android:id="@+id/townsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        app:adapter="@{viewModel}"
-        />
+        android:layout_margin="20dp"/>
+       <!-- app:adapter="@{viewModel}" -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -8,13 +8,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
-import com.jommaa.datacomponent.Results.TownsListResult
 import com.jommaa.datacomponent.dataobject.Town
 import com.jommaa.datacomponent.db.repositories.TownRepository
 import com.jommaa.weatherapplication.INavigationHandler
 import com.jommaa.weatherapplication.WeatherApplication
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.schedulers.Schedulers
 import java.lang.StringBuilder
 import java.util.*
@@ -23,7 +21,7 @@ import javax.inject.Inject
 class AddNewTownViewModel @Inject constructor(val townRepository: TownRepository,val application: WeatherApplication) : ViewModel() {
 
     var townName: String = ""
-    var result:ObservableField<String> = ObservableField<String>()
+    var result= ObservableField<String>()
     var newTown: Town? = null
     var isAddTownButtonVisible : Boolean = false
     private lateinit var  navigationHandler: INavigationHandler
