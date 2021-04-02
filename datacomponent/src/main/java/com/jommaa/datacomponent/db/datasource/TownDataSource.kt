@@ -19,5 +19,13 @@ class  TownDataSource(val context:Application) {
       return  dataBase.TownDao().getAll()
     }
 
+    fun getTownById(id : Int):Single<List<Town>>{
+        return  dataBase.TownDao().loadById(id)
+    }
+
+    fun getTownsCount() : Int {
+        return dataBase.TownDao().getTownsCount()
+    }
+
 
 }
