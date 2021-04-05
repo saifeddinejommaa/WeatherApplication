@@ -25,6 +25,11 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.ActionBar.Transparent">
         </activity>
+        <activity
+            android:name=".view.TownDetailActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.ActionBar.Transparent">
+        </activity>
     </application>
 
 </manifest>

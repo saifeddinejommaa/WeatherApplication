@@ -32,6 +32,7 @@ class MainActivity :  BaseActivity() {
 
       override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+       // setContentView( R.layout.activity_main)
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
           (application as WeatherApplication).component.inject(this)
@@ -40,14 +41,23 @@ class MainActivity :  BaseActivity() {
           setUpCustomActionBar()
           viewModel.setNavigationHandler(this)
 
+
+
+       // fab.setOnClickListener { view ->
+       //     startActivity(Intent(this,AddNewTownActivity::class.java))
+       // }
+
     }
 
 
 
     override fun onBackPressed() {
         if (mPager.currentItem == 0) {
+            // If the user is currently looking at the first step, allow the system to handle the
+            // Back button. This calls finish() on this activity and pops the back stack.
             super.onBackPressed()
         } else {
+            // Otherwise, select the previous step.
             mPager.currentItem = mPager.currentItem - 1
         }
     }
@@ -86,5 +96,47 @@ class MainActivity :  BaseActivity() {
         parent.setContentInsetsAbsolute(0, 0)
         mCustomView.setDataBinding(viewModel)
     }
+
+    private fun setUpCustomActionBar(){
+       val mCustomView = WeatherActionBar(this)
+        val layoutParams = ActionBar.LayoutParams(
+            ActionBar.LayoutParams.MATCH_PARENT,
+            ActionBar.LayoutParams.MATCH_PARENT
+        )
+        supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setCustomView(mCustomView,layoutParams)
+        supportActionBar?.setElevation(0.toFloat())
+        val parent = mCustomView.getParent() as androidx.appcompat.widget.Toolbar
+        parent.setContentInsetsAbsolute(0, 0)
+        mCustomView.setDataBinding(viewModel)
+
+     //   val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+       // val binding: CustomActionBarBinding = CustomActionBarBinding.inflate(inflater)
+      //  val binding: CustomActionBarBinding?= DataBindingUtil.bind<CustomActionBarBinding>(parent)
+       // binding?.let {
+        //    it.mainViewModel = viewModel
+       // }
+       // viewModel.setNavigationHandler(this)
+    }
+
+   /*
+    companion object {
+        @JvmStatic
+        @BindingAdapter("fm","adapter")
+        fun setAdapter(pager: ViewPager, fragmentManager:FragmentManager, viewModel: MainViewModel) {
+            if(fragmentManager!=null) {
+                val adapter = ScreenSlidePagerAdapter(viewModel.townsList,fragmentManager)
+                pager.adapter = adapter
+                pager.addOnPageChangeListener(viewModel.onPageChangeListener)
+            }
+
+        }
+    }
+    */
+
+
+
+
 
 }

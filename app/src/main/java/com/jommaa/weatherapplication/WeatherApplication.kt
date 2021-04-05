@@ -10,8 +10,6 @@ class  WeatherApplication @Inject constructor() : Application() {
 
         lateinit var component: ApplicationComponent
 
-
-
     override fun onCreate() {
         super.onCreate()
         component = DaggerApplicationComponent.builder().applicationModule(

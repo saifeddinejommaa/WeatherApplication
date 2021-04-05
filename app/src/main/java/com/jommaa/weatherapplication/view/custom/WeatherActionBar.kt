@@ -17,9 +17,11 @@ class WeatherActionBar(context: Context,
                        defStyleRes: Int = 0) : RelativeLayout(context, attrs, defStyle, defStyleRes) {
 
     var mBinding: CustomActionBarBinding? = null
+   // var Inflater : LayoutInflater? = null
     init {
        val Inflater= LayoutInflater.from(context)
         Inflater?.inflate(R.layout.custom_action_bar, this, true)
+       // val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         mBinding  = DataBindingUtil.inflate(Inflater, R.layout.custom_action_bar, this, true)
     }
 

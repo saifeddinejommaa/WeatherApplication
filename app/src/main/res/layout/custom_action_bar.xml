@@ -18,10 +18,9 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/ic_settings"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:onClick="@{()->MainViewModel.onSettingsButtonClick()}"></Button>
+        android:layout_width="wrap_content"
+        android:onClick="@{()->MainViewModel.onSettingsButtonClick()}"
+        android:layout_height="wrap_content"></Button>
 
     <Button
         android:id="@+id/addCityButton"
@@ -35,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"></Button>
 
       <TextView
-          android:text="@{MainViewModel.townName}"
+          android:text="@={MainViewModel.townName}"
           android:textColor="#ffffff"
           android:textSize="40sp"
           android:layout_centerHorizontal="true"
