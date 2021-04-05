@@ -76,17 +76,16 @@ class MainViewModel @Inject constructor(val townRepository: TownRepository ) : V
 
     }
 
-    // Called onDestroy. Clean up method.
     fun unbound() {
         disposables.clear()
     }
-
 
     private fun handleGetAllTowns(result: TownsListResult){
 
         when (result) {
             is TownsListResult.Success -> {
                 townsList.addAll(result.list)
+                townName.set(townsList.get(0).name)
             }
             is TownsListResult.Failure -> {
                 Log.d("Info",result.toString())

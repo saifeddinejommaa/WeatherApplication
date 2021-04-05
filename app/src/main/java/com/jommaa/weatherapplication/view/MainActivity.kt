@@ -82,6 +82,20 @@ class MainActivity :  BaseActivity() {
         }
     }
 
+    private fun setUpCustomActionBar(){
+       val mCustomView = WeatherActionBar(this)
+        val layoutParams = ActionBar.LayoutParams(
+            ActionBar.LayoutParams.MATCH_PARENT,
+            ActionBar.LayoutParams.MATCH_PARENT
+        )
+        supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setCustomView(mCustomView,layoutParams)
+        supportActionBar?.setElevation(0.toFloat())
+        val parent = mCustomView.getParent() as androidx.appcompat.widget.Toolbar
+        parent.setContentInsetsAbsolute(0, 0)
+        mCustomView.setDataBinding(viewModel)
+    }
 
     private fun setUpCustomActionBar(){
        val mCustomView = WeatherActionBar(this)
@@ -108,18 +122,15 @@ class MainActivity :  BaseActivity() {
 
    /*
     companion object {
-        /**
-         * bindList uses Databinding to initialize the recyclerView using an ObservableList from the MainViewModel
-         * this is referenced in activity_main.xml as 'app:adapter={@viewModel}'
-         */
         @JvmStatic
-        @BindingAdapter("adapter")
-        fun bindList(recyclerView: RecyclerView, viewModel: TownsListViewModel) {
-            val adapter = TownsListAdapter(viewModel.townsList)
-            adapter.onItemClickListener = { viewModel.onTownClicked(it) }
-            recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
-            recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-            recyclerView.adapter = adapter
+        @BindingAdapter("fm","adapter")
+        fun setAdapter(pager: ViewPager, fragmentManager:FragmentManager, viewModel: MainViewModel) {
+            if(fragmentManager!=null) {
+                val adapter = ScreenSlidePagerAdapter(viewModel.townsList,fragmentManager)
+                pager.adapter = adapter
+                pager.addOnPageChangeListener(viewModel.onPageChangeListener)
+            }
+
         }
     }
     */
